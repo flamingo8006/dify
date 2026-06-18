@@ -190,6 +190,10 @@ docker/volumes/seekdb/*
 !docker/volumes/oceanbase/init.d
 docker/volumes/iris/*
 
+# DGIST 운영: docker/volumes 전체 추적 해제 — 운영 docker/volumes는 /data/dify-volumes 심볼릭이라
+# stock config(myscale/oceanbase/opensearch/sandbox) 추적 시 git switch가 심볼릭을 파괴→빈DB 사고 (2026-06-18)
+docker/volumes/
+
 docker/nginx/conf.d/default.conf
 docker/nginx/ssl/*
 !docker/nginx/ssl/.gitkeep
