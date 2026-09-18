@@ -201,7 +201,9 @@ docker/volumes/iris/*
 
 # DGIST 운영: docker/volumes 전체 추적 해제 — 운영 docker/volumes는 /data/dify-volumes 심볼릭이라
 # stock config(myscale/oceanbase/opensearch/sandbox) 추적 시 git switch가 심볼릭을 파괴→빈DB 사고 (2026-06-18)
-docker/volumes/
+# ※ 끝에 슬래시를 붙이지 않는다 — 'docker/volumes/'는 디렉토리에만 매칭돼 운영의 **심볼릭 링크**를 무시하지 못한다
+#   (그러면 untracked로 잡혀 `git clean -fd` 대상이 됨). 슬래시 없는 패턴은 디렉토리·심볼릭 모두 매칭 (2026-09-18)
+docker/volumes
 
 docker/nginx/conf.d/default.conf
 docker/nginx/ssl/*
