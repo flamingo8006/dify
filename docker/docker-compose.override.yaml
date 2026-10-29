@@ -1,0 +1,28 @@
+# DGIST 운영 커스텀: Node.js 2026-10 보안 패치 오버레이 이미지 (작업 ND)
+# 이미지는 docker/dgist-node-patch/build.sh 로 서버에서 직접 빌드한다(레지스트리 없음).
+# localhost/ 접두 + pull_policy: never → 외부 레지스트리에서 같은 이름을 받아오는 일이 없다.
+# 빌드 전에 compose 를 실행하면 "No such image" 로 멈춘다(의도된 안전 실패).
+# 복귀: 이 파일을 치우고 같은 서비스를 up -d 하면 공식 이미지로 돌아간다(dgist-node-patch/README.md).
+# Dify 를 1.18 이상으로 올릴 때 이 파일을 삭제한다.
+services:
+  api:
+    image: localhost/dgist/dify-api:1.17.1-node24.22.2
+    pull_policy: never
+  api_websocket:
+    image: localhost/dgist/dify-api:1.17.1-node24.22.2
+    pull_policy: never
+  worker:
+    image: localhost/dgist/dify-api:1.17.1-node24.22.2
+    pull_policy: never
+  worker_beat:
+    image: localhost/dgist/dify-api:1.17.1-node24.22.2
+    pull_policy: never
+  web:
+    image: localhost/dgist/dify-web:1.17.1-node24.22.2
+    pull_policy: never
+  local_sandbox:
+    image: localhost/dgist/dify-agent-local-sandbox:1.17.1-node24.22.2
+    pull_policy: never
+  sandbox:
+    image: localhost/dgist/dify-sandbox:0.2.15-node24.22.2
+    pull_policy: never
